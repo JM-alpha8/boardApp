@@ -33,15 +33,13 @@
 
     <div class="actions" style="margin-top:18px;">
         <a href="/articles" class="btn">목록</a>
-        <a th:href="@{'/articles/' + ${article.id} + '/edit'}" class="btn" sec:authorize="isAuthenticated()">수정</a>
-
-        <span sec:authorize="isAuthenticated()">
-        <input type="hidden" id="article-id" th:value="${article.id}">
-        <button type="button" id="delete-btn" class="btn btn-danger">삭제</button>
-        <script src="/js/article.js" defer></script>
-      </span>
+        <span sec:authorize="isAuthenticated()"
+              th:if="${article.authorEmail != null and article.authorEmail == principalEmail}">
+  <a th:href="@{|/articles/${article.id}/edit|}" class="btn">수정</a>
+  <input type="hidden" id="article-id" th:value="${article.id}">
+  <button type="button" id="delete-btn" class="btn btn-danger">삭제</button>
+</span>
     </div>
-</div>
 </div>
 </body>
 </html>

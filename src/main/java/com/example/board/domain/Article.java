@@ -22,4 +22,8 @@ public class Article {
         this.content = content;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "author_id", nullable = false)
+    private User author;
+
 }
