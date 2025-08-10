@@ -1,9 +1,11 @@
-# ===== 1) Build Stage =====
 FROM gradle:8.8-jdk17 AS build
 WORKDIR /app
 COPY . .
-# 테스트 빌드 스킵: -x test
-RUN ./gradlew clean bootJar -x test
+# 윈도우 줄바꿈 제거 + 실행권한 부여
+RUN sed -i 's/\r$//' gradlew && chmod +x gradlew
+# 데몬 비활성화로 컨테이너 환경 안정화
+RUN ./gradlew --no-daemon clean bootJar -x test
+
 
 # ===== 2) Run Stage =====
 FROM eclipse-temurin:17-jre
