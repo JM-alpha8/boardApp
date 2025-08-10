@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # 처음엔 update로 시작(학습용). 운영 전엔 validate 권장
+    properties:
+      hibernate:
+        format_sql: true
+
+  thymeleaf:
+    cache: true
+
+logging:
+  level:
+    org.hibernate.SQL: warn
+
+server:
+  forward-headers-strategy: native
