@@ -30,4 +30,5 @@ server:
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: openid, profile, email
             user-name-attribute: email
