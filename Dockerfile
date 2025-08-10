@@ -13,8 +13,4 @@ COPY --from=build /app/build/libs/*.jar app.jar
 
 # Render가 PORT 환경변수를 줍니다.
 EXPOSE 8080
-ENTRYPOINT ["java",
-  "-Dserver.port=${PORT}",
-  "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE:-prod}",
-  "-jar","/app/app.jar"
-]
+ENTRYPOINT ["java", "-Dserver.port=${PORT}", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE:-prod}", "-jar","/app/app.jar"]
