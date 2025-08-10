@@ -1,10 +1,9 @@
 spring:
   h2.console.enabled: true
   datasource:
-    url: jdbc:h2:mem:boarddb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     hibernate.ddl-auto: update
     defer-datasource-initialization: true   # 🔴 중요: JPA로 스키마 만든 뒤 data.sql 실행
