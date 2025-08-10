@@ -1,0 +1,1 @@
+INSERT INTO article (title, content) VALUES ('나는야 첫글이야', '테스트 내용');

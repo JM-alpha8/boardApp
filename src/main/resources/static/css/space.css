@@ -1,0 +1,84 @@
+:root{
+  --bg0: #070818;
+  --bg1: #0c0f2b;
+  --bg2: #181a3a;
+  --text: #e7ecff;
+  --muted: #9aa3c7;
+  --primary: #7aa2ff;
+  --primary-2: #8a7aff;
+  --danger: #ff6b7a;
+  --card: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.12);
+  --glow: 0 0 24px rgba(122,162,255,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--text); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background:
+    radial-gradient(1200px 700px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
+    radial-gradient(800px 500px at 90% 120%, rgba(138,122,255,.18), transparent 60%),
+    linear-gradient(180deg, var(--bg1), var(--bg0) 40%, var(--bg2));
+}
+
+/* starfield */
+body::before, body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background-repeat:repeat; background-size:contain; opacity:.6; filter:blur(.2px);
+}
+body::before{ background-image: radial-gradient(2px 2px at 30% 20%, #fff, transparent 60%),
+                               radial-gradient(1.5px 1.5px at 70% 60%, #9fb6ff, transparent 60%),
+                               radial-gradient(1px 1px at 10% 80%, #fff, transparent 60%);}
+body::after{ animation: twinkle 6s linear infinite; opacity:.4 }
+@keyframes twinkle{ 50%{opacity:.2} }
+
+/* layout bits */
+.container{ max-width:920px; margin:0 auto; padding:24px; display:flex; flex-direction:column; gap:24px; }
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px;
+  backdrop-filter: blur(6px);
+  box-shadow: var(--glow);
+  width: 90%;
+  margin:0 auto;
+}
+h1,h2{letter-spacing:.3px}
+
+/* buttons */
+.btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:12px;
+  border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; text-decoration:none }
+.btn:hover{ transform: translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,.25) }
+.btn-primary{ background:linear-gradient(135deg, var(--primary), var(--primary-2)); border-color:transparent; color:#0b0f24 }
+.btn-danger{ border-color:transparent; background:linear-gradient(135deg,#ff8aa0,#ff6b7a); color:#2a0a11 }
+.btn-ghost{ background:transparent }
+
+/* inputs */
+input[type=text], input[type=email], input[type=password], textarea{
+  width:100%; padding:10px 12px; color:var(--text);
+  background:rgba(255,255,255,0.05); border:1px solid var(--border); border-radius:12px;
+}
+label{display:block; margin:10px 0 6px; color:var(--muted)}
+.actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* top bar */
+.nav{ display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+.brand{ font-weight:700; letter-spacing:.5px; color:white; text-decoration:none;}
+.brand:hover { color: white;  text-decoration: none; }
+
+.badge{ padding:4px 10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid var(--border); }
+
+/* Google button */
+.google-btn{
+  background:#fff; color:#1f1f1f; border:none;
+  box-shadow:0 2px 10px rgba(0,0,0,.2); border-radius:10px; padding:10px 14px;
+}
+.google-btn svg{ width:18px; height:18px }
+
+.brand,
+.brand:link,
+.brand:visited,
+.brand:hover,
+.brand:active {
+    color: white;
+    text-decoration: none;
+}
