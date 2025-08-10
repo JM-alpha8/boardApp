@@ -7,21 +7,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update           # 학습/시험 중엔 update, 운영 전환 시 validate 권장
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
 
   thymeleaf:
     cache: true
-
-logging:
-  level:
-    org.hibernate.SQL: warn
-
-server:
-  forward-headers-strategy: native
-
 
   security:
     oauth2:
@@ -31,4 +23,12 @@ server:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
             scope: openid, profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             user-name-attribute: email
+
+logging:
+  level:
+    org.hibernate.SQL: warn
+
+server:
+  forward-headers-strategy: native
